@@ -1,18 +1,19 @@
 const RULE_IDS = { docs: 1, drive: 2 };
 
 function buildRules(authuser) {
+  const queryTransform = {
+    addOrReplaceParams: [{ key: 'authuser', value: String(authuser) }],
+  };
   return [
     {
       id: RULE_IDS.docs,
       priority: 1,
       action: {
         type: 'redirect',
-        redirect: {
-          regexSubstitution: `https://docs.google.com/\\1?authuser=${authuser}`,
-        },
+        redirect: { transform: { queryTransform } },
       },
       condition: {
-        regexFilter: 'https://docs\\.google\\.com/([^?]+)(\\?.*)?$',
+        urlFilter: '||docs.google.com/',
         resourceTypes: ['main_frame'],
       },
     },
@@ -21,12 +22,10 @@ function buildRules(authuser) {
       priority: 1,
       action: {
         type: 'redirect',
-        redirect: {
-          regexSubstitution: `https://drive.google.com/\\1?authuser=${authuser}`,
-        },
+        redirect: { transform: { queryTransform } },
       },
       condition: {
-        regexFilter: 'https://drive\\.google\\.com/([^?]+)(\\?.*)?$',
+        urlFilter: '||drive.google.com/',
         resourceTypes: ['main_frame'],
       },
     },
