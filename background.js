@@ -1,4 +1,4 @@
-const RULE_IDS = { docs: 1, drive: 2 };
+const RULE_IDS = { docs: 1 };
 
 function buildRules(authuser) {
   const queryTransform = {
@@ -14,18 +14,6 @@ function buildRules(authuser) {
       },
       condition: {
         urlFilter: '||docs.google.com/',
-        resourceTypes: ['main_frame'],
-      },
-    },
-    {
-      id: RULE_IDS.drive,
-      priority: 1,
-      action: {
-        type: 'redirect',
-        redirect: { transform: { queryTransform } },
-      },
-      condition: {
-        urlFilter: '||drive.google.com/',
         resourceTypes: ['main_frame'],
       },
     },
