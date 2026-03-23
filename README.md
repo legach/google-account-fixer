@@ -12,7 +12,6 @@ The extension uses Chrome's `declarativeNetRequest` API to redirect matching URL
 
 Covered domains:
 - `docs.google.com` — Docs, Sheets, Slides, Forms, Drawings
-- `drive.google.com` — Drive folders and files
 
 Every navigation to these domains is redirected to the same URL with `?authuser=N` appended. If the parameter is already present, no redirect happens.
 

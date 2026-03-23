@@ -12,19 +12,5 @@
       "regexFilter": "https://docs\\.google\\.com/([^?]+)(\\?.*)?$",
       "resourceTypes": ["main_frame"]
     }
-  },
-  {
-    "id": 2,
-    "priority": 1,
-    "action": {
-      "type": "redirect",
-      "redirect": {
-        "regexSubstitution": "https://drive.google.com/\\1?authuser=0"
-      }
-    },
-    "condition": {
-      "regexFilter": "https://drive\\.google\\.com/([^?]+)(\\?.*)?$",
-      "resourceTypes": ["main_frame"]
-    }
   }
 ]
